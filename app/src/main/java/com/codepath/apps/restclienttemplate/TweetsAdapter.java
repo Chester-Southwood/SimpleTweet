@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TweetsAdapter  extends RecyclerView.Adapter<TweetsAdapter.ViewHolder>{
@@ -23,7 +24,10 @@ public class TweetsAdapter  extends RecyclerView.Adapter<TweetsAdapter.ViewHolde
 
     public TweetsAdapter(Context context, List<Tweet> tweets) {
         this.context = context;
-        this.tweets  = tweets;
+        if(tweets != null)
+            this.tweets  = tweets;
+        else
+            this.tweets = new ArrayList<Tweet>();
     }
 
     @NonNull
@@ -56,17 +60,25 @@ public class TweetsAdapter  extends RecyclerView.Adapter<TweetsAdapter.ViewHolde
         ImageView ivProfileImage;
         TextView  tvBody;
         TextView  tvScreenName;
+        TextView  tvTimeStamp;
+        TextView  tvNickName;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvBody         = itemView.findViewById(R.id.tvBody);
-            tvScreenName   = itemView.findViewById(R.id.tvScreenName);
+            tvScreenName   = itemView.findViewById(R.id.tvNickname); //TODO FIX NAME ISSUE
+            tvTimeStamp    = itemView.findViewById(R.id.tvTimeStamp);
+            tvNickName     = itemView.findViewById(R.id.tvScreenName);
         }
 
         public void bind(Tweet tweet) {
             Log.d("BIND", "Attempting to bind right now");
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
+            tvTimeStamp.setText(tweet.getFormmatedDate());
+            tvNickName.setText(tweet.user.name);
+            Log.d("TIMESTAMP", tweet.getFormmatedDate());
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
         }
 
