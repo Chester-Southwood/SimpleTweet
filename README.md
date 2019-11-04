@@ -1,4 +1,4 @@
-# Project 2 - *Name of App Here*
+# Project 2 - *Simple Tweet*
 
 **Name of your app** is an android app that allows a user to view his Twitter timeline. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
 
@@ -36,7 +36,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories that were checked:
 
+Sign in, Show Tweets with proper info, "infinite scroll  pagination", click link within tweet body, pull down to refresh (at end, look at second gif to see quick example of pull down to refresh)
+
 <img src='userStory.gif' />
+
+Pulldown Update Feature 
+
+![](pulldown.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
