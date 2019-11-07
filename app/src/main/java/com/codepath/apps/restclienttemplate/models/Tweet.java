@@ -10,13 +10,18 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.parceler.Parcel;
 
+@Parcel
 public class Tweet {
 
     public String body;
     public String created_at;
     public User user;
     public long id;
+
+    //Empty constructor needed by Parceler library
+    public Tweet(){}
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();

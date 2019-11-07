@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,8 @@ public class TimelineActivity extends AppCompatActivity {
 
 
     public static final String TAG = "TimelineActivity";
+    public static final int    ID  = 25;
+
 
     TwitterClient                     client;
     RecyclerView                      rvTweets;
@@ -49,11 +53,26 @@ public class TimelineActivity extends AppCompatActivity {
             //Showing to demo -> Toast.makeText(this, "COMPOSE!", Toast.LENGTH_SHORT).show();
             //Navigate to the compose activity
             Intent intent = new Intent(this, ComposeActivity.class);//where we are coming from and going to
-            startActivity(intent);
+            startActivityForResult(intent, ID);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == ID && resultCode == RESULT_OK) {
+            //Get data from intent (tweet)
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
+            //Update the RV with tweet
+            //Modify data source of tweets
+            tweets.add(0, tweet);
+            //Update the adapter
+            adapter.notifyItemInserted(0);
+            rvTweets.smoothScrollToPosition(0);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -77,6 +96,8 @@ public class TimelineActivity extends AppCompatActivity {
                 populateHomeTimeline();
             }
         });
+
+
 
         rvTweets = findViewById(R.id.rvTweets);
         tweets  = new ArrayList<Tweet>();
