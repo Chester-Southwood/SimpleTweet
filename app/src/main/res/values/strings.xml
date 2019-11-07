@@ -5,5 +5,8 @@
     <string name="login_label">Connect to Twitter</string>
     <string name="intent_scheme">oauth</string>
     <string name="intent_host">cprest</string>
+    <string name="title_activity_compose">ComposeActivity</string>
+    <string name="buttom_tweet">Tweet</string>
+    <string name="prompt_tweet">What is happening?</string>
 
 </resources>
