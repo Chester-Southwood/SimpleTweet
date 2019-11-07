@@ -2,7 +2,7 @@
 
 **Name of your app** is an android app that allows a user to view his Twitter timeline and post a new tweet. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
 
-Time spent: **23** hours spent in total
+Time spent: **23** hours spent in total, __5 hours__ spent on part 2.
 
 ## User Stories
 
@@ -62,7 +62,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2019] [Chester Southwood]
     
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
